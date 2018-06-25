@@ -1,0 +1,22 @@
+@import "chroma-styles";
+
+/* pages */
+@import "components/pages/alerts";
+@import "components/pages/landing_pages";
+@import "components/pages/overview-blocks";
+@import "components/pages/pages";
+@import "components/pages/secondary_menus";
+@import "components/pages/sections";
+@import "components/pages/background_pages";
+@import "components/content_sections/content_sections";
+@import "components/partials/partials";
+
+/* news */
+@import "components/news/media_coverage";
+@import "components/news/article_gallery";
+
+/* gallery */
+@import "components/gallery/gallery";
+
+/* webforms */
+@import "components/webforms/webforms";

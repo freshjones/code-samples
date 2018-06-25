@@ -1,0 +1,16 @@
+{{#if numFound}}
+  <ul>
+  {{#each docs}}
+    <li data-product-number="{{this.number_or_name}}">
+      <a href="{{this.ss_url}}" {{#if target}} target="_blank"{{/if}} >
+        <div><span class="item-name">{{number_and_name}}</span>{{#if discontinued}}<span class="item-discontinued">(Discontinued)</span>{{/if}}</div>
+        <div><span class="item-type">{{item_type}}</span></div>
+      </a>
+    </li>
+  {{/each}}
+  </ul>
+{{else}}
+  <div class="no-results">
+    <div>Sorry 0 results match the search term above, try a different keyword or <a href="/contact">contact us</a> for help.</div>
+  </div>
+{{/if}}

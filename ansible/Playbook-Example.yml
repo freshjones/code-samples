@@ -1,0 +1,14 @@
+---
+- hosts: northweb
+  become: yes
+  become_method: sudo
+  vars_files:
+    - ./vars/default.yml
+    - ./vars/apache.yml
+    - ./vars/mysql.yml
+  roles:
+    - common
+    - apache
+    - mysql
+    - php
+    - composer

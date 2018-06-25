@@ -1,0 +1,60 @@
+---
+apache_enablerepo: ""
+
+apache_listen_ip: "*"
+apache_listen_port: 80
+apache_listen_port_ssl: 443
+
+apache_create_vhosts: true
+apache_vhosts_filename: "vhosts.conf"
+
+apache_remove_default_vhost: false
+
+apache_default_vhost_redirect: true
+
+
+apache_global_vhost_settings: |
+  DirectoryIndex index.php index.html
+
+apache_sites_directory: "/var/www/sites"
+apache_sites_docroot: "public"
+
+apache_allow_override: "All"
+apache_options: "-Indexes +FollowSymLinks"
+
+apache_vhosts_ssl: []
+
+apache_ignore_missing_ssl_certificate: true
+
+apache_ssl_protocol: "All -SSLv2 -SSLv3"
+apache_ssl_cipher_suite: "AES256+EECDH:AES256+EDH"
+
+# Only used on Debian/Ubuntu.
+apache_mods_enabled:
+  - ssl.load
+  - expires.load
+  - alias.load
+  - headers.load
+  - deflate.load
+  - rewrite.load
+
+apache_extra_conf:
+  - "fqdn.conf"
+
+apache_conf_enabled:
+  - "fqdn.conf"
+
+apache_mods_disabled: []
+
+# Set initial apache state. Recommended values: `started` or `stopped`
+apache_state: started
+
+# Set apache state when configuration changes are made. Recommended values:
+# `restarted` or `reloaded`
+apache_restart_state: restarted
+
+# Apache package state; use `installed` to make sure it's installed, or `latest` if
+# you want to upgrade or switch versions using a new repo.
+apache_packages_state: installed
+
+drupal_core_owner: "{{ ansible_ssh_user | default(ansible_env.SUDO_USER, true) | default(ansible_env.USER, true) | default(ansible_user_id) }}"

@@ -1,0 +1,136 @@
+@mixin button()
+{
+  font-size: 13px;
+  font-weight:bold;
+  padding: 0.4em 1.5em;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 8px;
+  color: white;
+  background-color: $btn-blue;
+  box-shadow: lighten( $btn-blue, 20% ) 0 1px 0 inset;
+  border: 1px solid darken( $btn-blue, 10% );
+  
+  &:hover
+  {
+      text-decoration: none;
+      background-color: darken( $btn-blue, 10% );
+    color:#fff;
+  }
+  
+  &.disabled, &[disabled] 
+  {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+    opacity: 0.6;
+    background: lighten( $btn-blue, 10% );
+    cursor: default;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  
+  &.empty
+  {
+    background: none;
+    border: 1px solid darken( $btn-blue, 10% );
+    -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+    box-shadow: none;
+    color:$btn-blue;
+    &:hover
+    {
+      background: none;
+      color:darken($btn-blue,20%);
+    }
+  }
+
+  &.link
+  {
+    background: none;
+    border: none;
+    -moz-box-shadow: none;
+      -webkit-box-shadow: none;
+    box-shadow: none;
+    color:$btn-blue;
+    padding: 0;
+    &:hover
+    {
+      background: none;
+      color:darken($btn-blue,20%);
+    }
+  }
+  
+  &.slim, &.btn-slim
+  {
+    padding: 0.2em 0.75em;
+  }
+  
+  &.green {
+    @include button-color($btn-green);
+  }
+  
+  &.orange {
+    @include button-color(#ff9900);
+  }
+  
+  &.yellow {
+    @include button-color(#ffcc00);
+  }
+  
+  &.cyan {
+    @include button-color(#16b6ea);
+  }
+  
+  &.black {
+    @include button-color(#000);
+  }
+  
+  &.white, &.clear {
+    @include button-color(#e1e1e1, #999);
+    &:hover
+    {
+      color:#999;
+    }
+  }
+  
+  &.grey {
+    @include button-color(#666);
+  }
+  
+  &.purple {
+    @include button-color(#663399);
+  }
+  
+  &.red {
+    @include button-color(#cc3333);
+  }
+  
+  &.dkblue {
+    @include button-color(#114367);
+  }
+  
+  &.bright-blue {
+    @include button-color($bright-blue);
+  }
+  
+}
+
+@mixin button-color($base-color: $btn-blue, $text-color: white)
+{
+  color: $text-color;
+  background-color: $base-color;
+  box-shadow: lighten( $base-color, 20% ) 0 1px 0 inset;
+  border: 1px solid darken( $base-color, 10% );
+   
+  &:hover
+  {
+      background-color: darken( $base-color, 10% );
+    color: $text-color;
+  }
+  
+  &.disabled, &[disabled] 
+  {
+    background: lighten( $base-color, 10% );
+  }
+  
+}

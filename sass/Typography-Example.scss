@@ -1,0 +1,361 @@
+/* BASE TYPOGRAPHY STYLES */
+
+a, a.active {
+  text-decoration:none;
+  @include link-colors($bright-blue, $bright-blue, $bright-blue);
+}
+
+a:hover {
+  text-decoration:underline;
+}
+
+strong
+{
+  font-weight: bold;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+} 
+
+sup {
+    vertical-align: super;
+    font-size: smaller;
+} 
+
+a.btn
+{
+  font-weight: bold;
+}
+
+.black
+{
+  color:#000;
+}
+
+.text-align-right, .tar, .ta-right
+{
+  text-align:right;
+}
+
+
+
+/**
+ * $HEADINGS
+ */
+h1, .alpha,
+h2, .beta,
+h3, .gamma
+{
+  margin:0;
+  /* @include rhythm(0, 0, 0, 0.5); */
+}
+
+
+h4, .delta,
+h5, .epsilon,
+h6, .zeta 
+{
+  margin:0;
+  /* @include rhythm(0, 0, 0, 1); */
+}
+
+
+  
+h2, .beta,
+h3, .gamma,
+h4, .delta,
+h5, .epsilon,
+h6, .zeta 
+{
+  font-weight: 400;
+}
+
+h1, .alpha, .thin
+{
+  font-weight: 300 !important;
+}
+
+.thin > a
+{
+  font-weight:inherit !important;
+}
+
+h1, .alpha {
+  @include adjust-font-size-to(32px,1.5);
+}
+h2, .beta {
+  @include adjust-font-size-to(21px,1.35);
+}
+h3, .gamma {
+  @include font-size(18px);
+}
+h4, .delta {
+  @include font-size(16px);
+}
+h5, .epsilon{
+  @include font-size(14px);
+}
+h6, .zeta {
+  @include font-size(12px);
+}
+
+
+h1.bigger
+{
+  font-size:36px;
+}
+
+h2.bigger
+{
+  font-size:26px;
+}
+
+
+h4 + p, 
+h5 + p, 
+h3 + h4,
+h3 + h5,
+h3 + h6
+{
+  margin-top: 3px;
+}
+
+h2 + div
+{
+  margin-top: 20px;
+}
+
+/*
+h3 + h4,
+h3 + h5,
+h3 + h6,
+*/
+
+div + h1,
+h2 + h4 + p, 
+h2 + h5 + p, 
+h1 + div,  
+h3 + div, 
+h4 + div,
+
+h2 + p,
+
+p + h3,
+p + h4,
+p + h5,
+p + p, 
+p + blockquote, 
+p + ul,
+
+h1 + h2,
+h1 + h3,
+h1 + h4,
+h1 + p,
+
+h3 + h3,
+h4 + h4, 
+h5 + h5,
+ 
+h4 + h5,
+h4 + h6,
+
+h5 + h6,
+
+ul + p, 
+ul + h3,
+ul + h4,
+ul + h5,
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+
+img + p,
+
+fieldset + fieldset
+{
+  margin-top: 10px;
+}
+
+
+/**
+ * $PARAGRAPHS
+ */
+p, %p, ul 
+{
+  margin: 0;
+  /* @include rhythm(0, 0, 0, 1); */
+}
+
+p + img {
+  float: left;
+  margin-right: $horz-spacing-unit;
+}
+
+/**
+ * $QUOTES
+ */
+blockquote {
+  
+  @extend %p;
+  @include rhythm(0, 1, 1, 1);
+  padding: 0 1.5em;
+
+  /*
+  @include rhythm-borders(1px);
+  @include apply-side-rhythm-border(left, 10px);
+  */
+  
+  font-style: italic;
+  color: $dark-blue;
+
+  p {
+    margin: 0;
+  }
+  
+}
+
+q 
+{
+  font-style: italic;
+}
+
+/**
+ * $MARKS
+ */
+mark, .marker {
+  padding: 0.1em 0.5em;
+
+  background: $light-blue;
+
+  color: #fff;
+  @include font-size(12px);
+  text-transform: capitalize;
+
+  @include border-radius(10px);
+}
+
+
+
+.lead p, p.lead
+{
+  line-height:1.5;
+  font-size:110%;
+}
+
+.float-33 .view-content > .group
+{
+  float:left;
+  width:33%;
+  margin:0;
+  padding:0;
+}
+
+
+
+.content-seperator
+{
+  margin-top:30px;
+  margin-bottom:30px; 
+}
+
+
+.centered-list
+{
+  
+  ul
+  {
+    text-align:center;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  li, li > a
+  {
+    display:block;
+    width:100%;
+    margin:0;
+  }
+  
+  li + li
+  {
+    margin-top:10px;
+  }
+  
+}
+
+.centered-list-inline
+{
+  
+  li
+  {
+    display:inline-block;
+    width:auto;
+  }
+  
+  li + li
+  {
+    margin-left:10px;
+    margin-top:0;
+  }
+  
+}
+
+.no-top-margin
+{
+  margin-top:0 !important;
+}
+
+.color-green
+{
+  @extend %color-green;
+}
+
+.color-white, .color-white a, .color-white a:hover
+{
+  @extend %color-white;
+}
+
+.color-blue
+{
+  @extend %color-blue;
+}
+
+.color-cyan
+{
+  @extend %color-cyan;
+}
+
+.text-centered
+{
+  text-align:center;
+}
+
+.no-text-wrap
+{
+   white-space: nowrap;
+}
+
+@include breakpoint($large, true)
+{
+
+  .indented-120px
+  {
+    padding-left:120px;
+    padding-right:120px;
+  }
+  
+  .indented-left-120px
+  {
+    padding-left:120px;
+  }
+  
+  .indented-right-120px
+  {
+    padding-right:120px;
+  }
+  
+}

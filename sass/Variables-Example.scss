@@ -1,0 +1,23 @@
+
+$base : Helvetica, Arial, sans-serif;
+
+$base-font-size: 14px;
+$base-line-weight: 300;
+$base-line-height: 20px;
+$base-font-family: $base;
+
+$default-text-shadow-color: rgba(0,0,0, 0.2);
+$default-text-shadow-blur: 1px;
+$default-text-shadow-v-offset: 1px;
+$default-text-shadow-h-offset: 1px;
+
+$line-height-1: 1;
+$line-height-2: 1.125;
+$line-height-3: 1.25;
+$line-height-4: 1.5;
+
+%section-headline
+{
+  font-size: 52px;
+  color:$dark-blue;
+}

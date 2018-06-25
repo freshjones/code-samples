@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.megamenu_block
+    - field.field.block_content.megamenu_block.field_yoc_megamenu_content
+id: block_content.megamenu_block.default
+targetEntityType: block_content
+bundle: megamenu_block
+mode: default
+content:
+  field_yoc_megamenu_content:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,21 @@
+---
+# Include variables and define needed variables.
+- name: Include variables.
+  include_vars: "ubuntu.yml"
+
+# Setup/install tasks.
+- include_tasks: "install.yml"
+
+# Configure Apache.
+- include_tasks: "configure.yml"
+
+# set vhosts.
+- include_tasks: "vhosts.yml"
+
+- name: Ensure Apache has selected state and enabled on boot.
+  service:
+    name: "{{ apache_service }}"
+    state: "{{ apache_state }}"
+    enabled: yes
+
+

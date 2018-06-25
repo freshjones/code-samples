@@ -1,0 +1,101 @@
+<div summary="" class="fc-items">
+    <div>
+      <div class="fc-head">
+        <div class="fc-head-item fc-head-num">#</div>
+        <div class="fc-head-item fc-head-quantity" >Quantity</div>
+        <div class="fc-head-item fc-head-description" >Description</div>
+        <div class="fc-head-item fc-head-prices">
+          <div class="fc-head-unit-price">Unit Price</div>
+          <div class="fc-head-ext-price">Ext Price</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-body">
+      {{#each items}}
+          <div data-id="{{id}}" class="fc-body-item-wrapper">
+              <div class="fc-body-item fc-body-num">
+                <div class="fc-label">Item No:</div>
+                <div class="fc-content">{{item_number}}</div>
+              </div>
+              <div class="fc-body-item fc-body-quantity">
+                <div class="fc-label">Quantity:</div>
+                <div class="fc-content">
+                  {{#if_option_eq this.options 'type' 'Quote' }}
+                    <div class="mb1">
+                      <span class="fc-quantity-disabled">{{quantity}}</span>
+                      <a 
+                        class="showCartClueTips" 
+                        style="display: inline-block; vertical-align: top;" 
+                        href="/cluetip/messages?type=quotequantities" 
+                        rel="/cluetip/messages?type=quotequantities" 
+                        title="Quote Quantities"
+                      >
+                        <img alt="Info" src="/sites/all/themes/chroma/images/iconInformation.png" width="9" height="9">
+                      </a>
+                    </div>
+                    <div class="h6 caps"><a href="#" class="fc-remove-item">Remove</a></div>
+                  {{else}}
+                    {{#if parent_code }}
+                    <div>
+                      <span class="fc-quantity-disabled">{{quantity}}</span>
+                      <a 
+                        class="showCartClueTips" 
+                        style="display: inline-block; vertical-align: top;" 
+                        href="/cluetip/messages?type=bundleditem" 
+                        rel="/cluetip/messages?type=bundleditem" 
+                        title="Bundled Item"
+                      >
+                        <img alt="Info" src="/sites/all/themes/chroma/images/iconInformation.png" width="9" height="9">
+                      </a>
+                    </div>
+                    {{else}}
+                    <div>{{quantitySelector quantity quantity_min quantity_max}}</div>
+                    <div class="flex justify-start mt1">
+                      {{#showRemove parent_code }}<div class="h6 caps"><a href="#" class="fc-remove-item">Remove</a></div>{{/showRemove}}
+                    </div>
+                    {{/if}}
+                  {{/if_option_eq}}
+                </div>
+              </div>
+              <div class="fc-body-item fc-body-description">
+                <div class="fc-label">Description:</div>
+                <div class="fc-content">
+                  <div class="mb1 strong">{{this.name}}</div>
+                  
+                  {{#with (lookup2 this.options 'description')}}
+                    <div class="h4 mb1">{{value}}</div>
+                  {{/with}}
+
+                  {{#each this.options}}
+                    {{cartOptionFormatter this}}
+                  {{/each}}
+
+                  {{#with (lookup2 this.options 'notes')}}
+                    <div class="h4 mb1 pt1"><strong>Notes:</strong> {{{value}}}</div>
+                  {{/with}}
+
+                  {{#with (lookup2 this.options 'cart notes')}}
+                    <div class="h4 mb1 italic blue">{{{value}}}</div>
+                  {{/with}}
+                </div>
+              </div>
+              <div class="fc-body-item fc-body-prices">
+                <div class="fc-body-unit-price">
+                  <div class="fc-label">Unit:</div>
+                  <div class="fc-content">
+                    <span>{{currency this.price_each}}</span>
+                    <span class="fc-body-unit-price-multiplier"> x {{quantity}}</span>
+                    {{#with (lookup2 this.options 'discount')}}<span class="fc-body-unit-price-discount">({{value}} discount)</span>{{/with}}
+                  </div>
+                </div>
+                <div class="fc-body-ext-price">
+                  <div class="fc-label">Ext:</div>
+                  <div class="fc-content">
+                    {{currency this.price}}
+                  </div>
+                </div>
+              </div>
+          </div>
+        {{/each}}
+    </div>
+</div>
